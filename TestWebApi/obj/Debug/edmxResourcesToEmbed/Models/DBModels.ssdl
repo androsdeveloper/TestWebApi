@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WebAPIDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Assigns">
+    <Key>
+      <PropertyRef Name="AssignId" />
+    </Key>
+    <Property Name="AssignId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeID" Type="int" />
+    <Property Name="InsuranceId" Type="int" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" />
+    <Property Name="EmpCode" Type="varchar" MaxLength="50" />
+    <Property Name="Position" Type="varchar" MaxLength="50" />
+    <Property Name="Office" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Insurance">
+    <Key>
+      <PropertyRef Name="InsuranceId" />
+    </Key>
+    <Property Name="InsuranceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="DescriptionInsurance" Type="varchar" MaxLength="50" />
+    <Property Name="TypeCoveringId" Type="int" />
+    <Property Name="Coverage" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="StartValidity" Type="datetime" />
+    <Property Name="Price" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="TypeRiskId" Type="int" />
+  </EntityType>
+  <EntityType Name="TypeCovering">
+    <Key>
+      <PropertyRef Name="TypeCoveringId" />
+    </Key>
+    <Property Name="TypeCoveringId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TypeRisk">
+    <Key>
+      <PropertyRef Name="TypeRiskId" />
+    </Key>
+    <Property Name="TypeRiskId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="WebAPIDBModelStoreContainer">
+    <EntitySet Name="Assigns" EntityType="Self.Assigns" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Insurance" EntityType="Self.Insurance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TypeCovering" EntityType="Self.TypeCovering" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TypeRisk" EntityType="Self.TypeRisk" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

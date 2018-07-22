@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WebAPIDBModelStoreContainer" CdmEntityContainer="DBModel">
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="WebAPIDBModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="EmpCode" ColumnName="EmpCode" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="Office" ColumnName="Office" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeRisks">
+      <EntityTypeMapping TypeName="WebAPIDBModel.TypeRisk">
+        <MappingFragment StoreEntitySet="TypeRisk">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="TypeRiskId" ColumnName="TypeRiskId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Insurances">
+      <EntityTypeMapping TypeName="WebAPIDBModel.Insurance">
+        <MappingFragment StoreEntitySet="Insurance">
+          <ScalarProperty Name="TypeRiskId" ColumnName="TypeRiskId" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="StartValidity" ColumnName="StartValidity" />
+          <ScalarProperty Name="Coverage" ColumnName="Coverage" />
+          <ScalarProperty Name="TypeCoveringId" ColumnName="TypeCoveringId" />
+          <ScalarProperty Name="DescriptionInsurance" ColumnName="DescriptionInsurance" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="InsuranceId" ColumnName="InsuranceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeCoverings">
+      <EntityTypeMapping TypeName="WebAPIDBModel.TypeCovering">
+        <MappingFragment StoreEntitySet="TypeCovering">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="TypeCoveringId" ColumnName="TypeCoveringId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Assigns">
+      <EntityTypeMapping TypeName="WebAPIDBModel.Assign">
+        <MappingFragment StoreEntitySet="Assigns">
+          <ScalarProperty Name="InsuranceId" ColumnName="InsuranceId" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="AssignId" ColumnName="AssignId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

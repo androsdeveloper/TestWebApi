@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WebAPIDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Assigns">
+          <Key>
+            <PropertyRef Name="AssignId" />
+          </Key>
+          <Property Name="AssignId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="InsuranceId" Type="int" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="EmpCode" Type="varchar" MaxLength="50" />
+          <Property Name="Position" Type="varchar" MaxLength="50" />
+          <Property Name="Office" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Insurance">
+          <Key>
+            <PropertyRef Name="InsuranceId" />
+          </Key>
+          <Property Name="InsuranceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="DescriptionInsurance" Type="varchar" MaxLength="50" />
+          <Property Name="TypeCoveringId" Type="int" />
+          <Property Name="Coverage" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="StartValidity" Type="datetime" />
+          <Property Name="Price" Type="decimal" Precision="30" Scale="2" />
+          <Property Name="TypeRiskId" Type="int" />
+        </EntityType>
+        <EntityType Name="TypeCovering">
+          <Key>
+            <PropertyRef Name="TypeCoveringId" />
+          </Key>
+          <Property Name="TypeCoveringId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TypeRisk">
+          <Key>
+            <PropertyRef Name="TypeRiskId" />
+          </Key>
+          <Property Name="TypeRiskId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="WebAPIDBModelStoreContainer">
+          <EntitySet Name="Assigns" EntityType="Self.Assigns" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Insurance" EntityType="Self.Insurance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeCovering" EntityType="Self.TypeCovering" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeRisk" EntityType="Self.TypeRisk" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WebAPIDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmpCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Position" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Office" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="DBModel" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="TypeRisks" EntityType="WebAPIDBModel.TypeRisk" />
+          <EntitySet Name="Insurances" EntityType="WebAPIDBModel.Insurance" />
+          <EntitySet Name="TypeCoverings" EntityType="WebAPIDBModel.TypeCovering" />
+          <EntitySet Name="Assigns" EntityType="WebAPIDBModel.Assign" />
+        </EntityContainer>
+        <EntityType Name="TypeRisk">
+          <Key>
+            <PropertyRef Name="TypeRiskId" />
+          </Key>
+          <Property Name="TypeRiskId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Insurance">
+          <Key>
+            <PropertyRef Name="InsuranceId" />
+          </Key>
+          <Property Name="InsuranceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DescriptionInsurance" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TypeCoveringId" Type="Int32" />
+          <Property Name="Coverage" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="StartValidity" Type="DateTime" Precision="3" />
+          <Property Name="Price" Type="Decimal" Precision="30" Scale="2" />
+          <Property Name="TypeRiskId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TypeCovering">
+          <Key>
+            <PropertyRef Name="TypeCoveringId" />
+          </Key>
+          <Property Name="TypeCoveringId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Assign">
+          <Key>
+            <PropertyRef Name="AssignId" />
+          </Key>
+          <Property Name="AssignId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="InsuranceId" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WebAPIDBModelStoreContainer" CdmEntityContainer="DBModel">
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="WebAPIDBModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="EmpCode" ColumnName="EmpCode" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Office" ColumnName="Office" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeRisks">
+            <EntityTypeMapping TypeName="WebAPIDBModel.TypeRisk">
+              <MappingFragment StoreEntitySet="TypeRisk">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TypeRiskId" ColumnName="TypeRiskId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Insurances">
+            <EntityTypeMapping TypeName="WebAPIDBModel.Insurance">
+              <MappingFragment StoreEntitySet="Insurance">
+                <ScalarProperty Name="TypeRiskId" ColumnName="TypeRiskId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="StartValidity" ColumnName="StartValidity" />
+                <ScalarProperty Name="Coverage" ColumnName="Coverage" />
+                <ScalarProperty Name="TypeCoveringId" ColumnName="TypeCoveringId" />
+                <ScalarProperty Name="DescriptionInsurance" ColumnName="DescriptionInsurance" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="InsuranceId" ColumnName="InsuranceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeCoverings">
+            <EntityTypeMapping TypeName="WebAPIDBModel.TypeCovering">
+              <MappingFragment StoreEntitySet="TypeCovering">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TypeCoveringId" ColumnName="TypeCoveringId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Assigns">
+            <EntityTypeMapping TypeName="WebAPIDBModel.Assign">
+              <MappingFragment StoreEntitySet="Assigns">
+                <ScalarProperty Name="InsuranceId" ColumnName="InsuranceId" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="AssignId" ColumnName="AssignId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
